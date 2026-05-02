@@ -10,7 +10,7 @@ const defaultItems = Array.from(
 export default function PaginationDemo({
   items = defaultItems,
 }: PaginationDemoProps) {
-  const [itemsPerPage, setItemsPerPage] = useState(10); // Default 
+  const [itemsPerPage, setItemsPerPage] = useState(10); // Default
 
   const {
     currentPage,
