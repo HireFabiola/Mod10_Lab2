@@ -16,7 +16,7 @@ export default function PaginationDemo({
     prevPage,
     setPage,
   } = usePagination({
-    items,
+    totalItems: items.length,
     itemsPerPage: 10,
   });
 
