@@ -18,7 +18,7 @@ export function usePagination({
 
     // Trigger update effect for state changes to itemsPerPage
     useEffect(){
-        const totalPages = Math.ceil(totalItems / displayedItems);
+       
     }
 
 

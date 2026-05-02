@@ -10,7 +10,7 @@ const defaultItems = Array.from(
 export default function PaginationDemo({
   items = defaultItems,
 }: PaginationDemoProps) {
-  const [itemsPerPage, setItemsPerPage] = useState(20);
+  const [itemsPerPage, setItemsPerPage] = useState(10); // Default 
 
   const {
     currentPage,
@@ -28,6 +28,7 @@ export default function PaginationDemo({
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentItems = items.slice(startIndex, startIndex + itemsPerPage);
 
+
   return (
     <div>
       <h2>Pagination Demo</h2>
@@ -42,8 +43,6 @@ export default function PaginationDemo({
             <option value={5}>5</option>
             <option value={10}>10</option>
             <option value={20}>20</option>
-            <option value={25}>25</option>
-            <option value={50}>50</option>
           </select>
         </label>
 
