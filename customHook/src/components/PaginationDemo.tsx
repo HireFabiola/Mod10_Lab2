@@ -1,15 +1,20 @@
-import {usePagination} from "../components/usePagination";
+import { useState } from "react";
+import { usePagination } from "../components/usePagination";
 import type { PaginationDemoProps } from "../types";
 
-const defaultItems = Array.from({ length: 100 }, (_, index) => `Item ${index + 1}`);
+const defaultItems = Array.from(
+  { length: 123 },
+  (_, index) => `Item ${index + 1}`
+);
 
 export default function PaginationDemo({
   items = defaultItems,
 }: PaginationDemoProps) {
+  const [itemsPerPage, setItemsPerPage] = useState(20);
+
   const {
     currentPage,
     totalPages,
-    currentItems,
     canPrevPage,
     canNextPage,
     nextPage,
@@ -17,22 +22,43 @@ export default function PaginationDemo({
     setPage,
   } = usePagination({
     totalItems: items.length,
-    itemsPerPage: 5,
+    itemsPerPage,
   });
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentItems = items.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <div>
       <h2>Pagination Demo</h2>
 
+      <div>
+        <label>
+          Items per page:{" "}
+          <select
+            value={itemsPerPage}
+            onChange={(event) => setItemsPerPage(Number(event.target.value))}
+          >
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={25}>25</option>
+            <option value={50}>50</option>
+          </select>
+        </label>
+
+        <h3>Total Items: {items.length}</h3>
+      </div>
+
       <p>
         Page {currentPage} of {totalPages}
       </p>
 
-      <ul>
+      <ol start={startIndex + 1}>
         {currentItems.map((item) => (
           <li key={item}>{item}</li>
         ))}
-      </ul>
+      </ol>
 
       <div>
         <button onClick={prevPage} disabled={!canPrevPage}>
