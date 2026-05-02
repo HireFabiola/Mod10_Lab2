@@ -18,3 +18,12 @@ export interface usePaginationReturnProps {
     canPrevPage: boolean,
 
 }
+
+export interface PaginationDemoItems {
+    arrayList: Array<number|string>,
+    currentPageDisplay: number,
+    prevButton(): void,
+    nextButton(): void,
+    canPrevPage?:boolean,
+    canNextPage?: boolean,
+}
