@@ -12,6 +12,7 @@ export default function PaginationDemo({
 }: PaginationDemoProps) {
   const [itemsPerPage, setItemsPerPage] = useState(10); // Default
 
+
   const {
     currentPage,
     totalPages,

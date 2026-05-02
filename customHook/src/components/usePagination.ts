@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, act } from "react";
 import type { usePaginationProps } from "../types/index";
 import type { usePaginationReturnProps } from "../types/index";
 
@@ -27,20 +27,26 @@ export function usePagination({
     setEndIndex(activePage * itemsPerPage - 1);
   }, [activePage, itemsPerPage]);
 
-  // Temporary placeholders (since you said you're not implementing logic yet)
-  const canPrevPage = true;
+  // Initialize nextPage? prevPage? values
+  const canPrevPage = false;
   const canNextPage = true;
 
+  // If not at top of list, set active page to the previous one
   const prevPage = () => {
-    console.log("prev clicked");
+   if (canPrevPage){
+    setActivePage(activePage-1);
+   }
+   return
   };
+
 
   const nextPage = () => {
     console.log("next clicked");
   };
 
+  // Updates when number slices are clicked
   const setPage = (page: number) => {
-    console.log("set page:", page);
+  setActivePage(page);
   };
 
   // Return must be an object (NOT JSX)
