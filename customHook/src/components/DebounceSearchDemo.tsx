@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDebounce } from "../components/useDebounce";
+import type { useDebounceProps } from "../types";
 
 export default function DebounceSearchDemo() {
 //   const [inputValue, setInputValue] = useState("");

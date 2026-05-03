@@ -22,3 +22,8 @@ export interface usePaginationReturnProps {
 export interface PaginationDemoProps {
   items?: Array<number | string>;
 }
+
+export interface useDebounceProps{
+    value: string,
+    delay: number,
+}
