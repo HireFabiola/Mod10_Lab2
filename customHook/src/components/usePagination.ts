@@ -5,6 +5,7 @@ import type { usePaginationReturnProps } from "../types/index";
 export function usePagination({
   totalItems,
   itemsPerPage,
+  itemsOnCurrentPage,
   initialPage = 1, // Set default for optional value
 }: usePaginationProps): usePaginationReturnProps {
 
@@ -29,16 +30,14 @@ export function usePagination({
 
   // Trigger update when the below states change to ensure current page updates correctly when itemsPerPage is changed
   useEffect(() => {
-  if (activePage > totalPages) {
-    setActivePage(totalPages);
-  }
-}, [activePage, totalPages]);
+    if (activePage > totalPages) {
+      setActivePage(totalPages);
+    }
+  }, [activePage, totalPages]);
 
   // set boolean value according to test value
-  const canPrevPage = activePage > 1; 
+  const canPrevPage = activePage > 1;
   let canNextPage = activePage < totalPages;
-
-
 
   // If not at first page, set active page to the previous one
   const prevPage = () => {
@@ -60,11 +59,19 @@ export function usePagination({
     setActivePage(page);
   };
 
-  // Return object according to 
+  // Check for number of items on final page
+  if (activePage === totalPages) {
+    itemsOnCurrentPage = totalItems % itemsPerPage;
+  } else {
+    itemsOnCurrentPage = itemsPerPage;
+  }
+
+  // Object being returned to PaginationDemo 
   return {
     currentPage: activePage,
-    totalPages, 
+    totalPages,
     canPrevPage,
+    itemsOnCurrentPage,
     canNextPage,
     prevPage,
     nextPage,

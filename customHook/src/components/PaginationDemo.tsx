@@ -18,6 +18,7 @@ export default function PaginationDemo({
     totalPages,
     canPrevPage,
     canNextPage,
+    itemsOnCurrentPage,
     nextPage,
     prevPage,
     setPage,
@@ -62,7 +63,7 @@ export default function PaginationDemo({
           <li key={item}>{item}</li>
         ))}
       </ol>
-      <h3>Showing {items[startIndex]} - {items[endIndex]} (Total on this page: 3)</h3>
+      <h3>Showing {items[startIndex]} - {items[endIndex]} (Total on this page: {itemsOnCurrentPage})</h3>
       <div>
         <button onClick={prevPage} disabled={!canPrevPage}>
           Previous
