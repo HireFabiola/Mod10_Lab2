@@ -27,26 +27,30 @@ export function usePagination({
     setEndIndex(activePage * itemsPerPage - 1);
   }, [activePage, itemsPerPage]);
 
-  // Initialize nextPage? prevPage? values
-  const canPrevPage = false;
-  const canNextPage = true;
+  // set boolean value according to test value
+  const canPrevPage = activePage > 1; 
+  let canNextPage = activePage < totalPages;
 
-  // If not at top of list, set active page to the previous one
+
+
+  // If not at first page, set active page to the previous one
   const prevPage = () => {
-   if (canPrevPage){
-    setActivePage(activePage-1);
-   }
-   return
+    if (canPrevPage) {
+      setActivePage(activePage - 1);
+    }
+    return
   };
 
-
+  //If not at last page, set active page to next page
   const nextPage = () => {
-    console.log("next clicked");
-  };
+    if (canNextPage) {
+      setActivePage(activePage + 1);
+    };
+  }
 
   // Updates when number slices are clicked
   const setPage = (page: number) => {
-  setActivePage(page);
+    setActivePage(page);
   };
 
   // Return must be an object (NOT JSX)
