@@ -27,6 +27,13 @@ export function usePagination({
     setEndIndex(activePage * itemsPerPage - 1);
   }, [activePage, itemsPerPage]);
 
+  // Trigger update when the below states change to ensure current page updates correctly when itemsPerPage is changed
+  useEffect(() => {
+  if (activePage > totalPages) {
+    setActivePage(totalPages);
+  }
+}, [activePage, totalPages]);
+
   // set boolean value according to test value
   const canPrevPage = activePage > 1; 
   let canNextPage = activePage < totalPages;
@@ -53,10 +60,10 @@ export function usePagination({
     setActivePage(page);
   };
 
-  // Return must be an object (NOT JSX)
+  // Return object according to 
   return {
     currentPage: activePage,
-    totalPages, // done
+    totalPages, 
     canPrevPage,
     canNextPage,
     prevPage,
