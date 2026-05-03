@@ -3,13 +3,20 @@ import { usePagination } from "../components/usePagination";
 import type { PaginationDemoProps } from "../types";
 
 const defaultItems = Array.from(
-  { length: 123 },
+  { length: 500 },
   (_, index) => `Item ${index + 1}`
 );
 
 export default function PaginationDemo({
   items = defaultItems,
 }: PaginationDemoProps) {
+
+  // Check for empty array right away
+  if (items.length === 0)
+  {
+    return  <h3>List is empty</h3>;
+  }
+
   const [itemsPerPage, setItemsPerPage] = useState(10); // Default
 
 
