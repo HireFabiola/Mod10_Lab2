@@ -8,8 +8,8 @@ export interface usePaginationProps {
 export interface usePaginationReturnProps {
     currentPage: number,
     totalPages: number,
-    startIndex: number,
-    endIndex: number,
+    // startIndex: number,
+    // endIndex: number,
     itemsOnCurrentPage: number,
     setPage(pageNumber): void,
     nextPage(): void,

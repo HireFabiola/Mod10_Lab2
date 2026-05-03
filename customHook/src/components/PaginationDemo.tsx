@@ -27,6 +27,7 @@ export default function PaginationDemo({
   });
 
   const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = (currentPage) * itemsPerPage - 1;
   const currentItems = items.slice(startIndex, startIndex + itemsPerPage);
 
 
@@ -55,12 +56,13 @@ export default function PaginationDemo({
         Page {currentPage} of {totalPages}
       </p>
 
+
       <ol start={startIndex + 1}>
         {currentItems.map((item) => (
           <li key={item}>{item}</li>
         ))}
       </ol>
-
+      <h3>Showing {items[startIndex]} - {items[endIndex]} (Total on this page: 3)</h3>
       <div>
         <button onClick={prevPage} disabled={!canPrevPage}>
           Previous
