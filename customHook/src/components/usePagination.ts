@@ -60,7 +60,7 @@ export function usePagination({
   };
 
   // Check for number of items on final page
-  if (activePage === totalPages) {
+  if ((activePage === totalPages) && ((totalItems % itemsPerPage) !== 0)){
     itemsOnCurrentPage = totalItems % itemsPerPage;
   } else {
     itemsOnCurrentPage = itemsPerPage;
