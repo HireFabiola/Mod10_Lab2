@@ -3,7 +3,7 @@ import { usePagination } from "../components/usePagination";
 import type { PaginationDemoProps } from "../types";
 
 const defaultItems = Array.from(
-  { length: 500 },
+  { length: 125 },
   (_, index) => `Item ${index + 1}`
 );
 
@@ -35,12 +35,12 @@ export default function PaginationDemo({
   });
 
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = (currentPage) * itemsPerPage - 1;
+  const endIndex = startIndex + itemsOnCurrentPage - 1;
   const currentItems = items.slice(startIndex, startIndex + itemsPerPage);
 
 
   return (
-    <div>
+    <div className="wrapperContainer">
       <h2>Pagination Demo</h2>
 
       <div>
@@ -70,7 +70,9 @@ export default function PaginationDemo({
           <li key={item}>{item}</li>
         ))}
       </ol>
+
       <h3>Showing {items[startIndex]} - {items[endIndex]} (Total on this page: {itemsOnCurrentPage})</h3>
+      
       <div>
         <button onClick={prevPage} disabled={!canPrevPage}>
           Previous
