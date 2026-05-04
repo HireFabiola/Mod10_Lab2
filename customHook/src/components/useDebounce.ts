@@ -15,7 +15,7 @@ export function useDebounce(value, delay) {
       setDebouncedValue(value);
     }, delay);
 
-    // Clean up timer everytime timer useDebounced is called
+    // Clean up timer everytime useDebounced is called
     return () => {
       clearTimeout(handler);
     }
