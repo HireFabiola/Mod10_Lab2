@@ -4,7 +4,7 @@ import type { useDebounceProps } from "../types";
 
 export default function DebounceSearchDemo() {
   const [inputValue, setInputValue] = useState("");
-  const delay = 500;
+  const delay = 1000;
 
   // ✅ Actual call to your custom hook
   const debouncedValue = useDebounce(inputValue, delay);
