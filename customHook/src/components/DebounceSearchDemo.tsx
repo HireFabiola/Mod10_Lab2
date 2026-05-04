@@ -17,7 +17,7 @@ export default function DebounceSearchDemo() {
   }, [debouncedValue]);
 
   return (
-    <div>
+    <div className="wrapperContainer">
       <h2>Debounce Search Demo</h2>
 
       <p>Debounce Delay (ms): {delay}</p>

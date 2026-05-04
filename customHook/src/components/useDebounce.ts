@@ -1,7 +1,7 @@
+import { useState, useEffect } from "react";
 import DebounceSearchDemo from "./DebounceSearchDemo";
 
 
 export function useDebounce(value, delay) {
-  console.log("I am here");
-  return "I am here";
+  const [debouncedValue, setDebouncedValue] = useState(value);
 }
